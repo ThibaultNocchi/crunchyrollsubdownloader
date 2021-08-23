@@ -4,7 +4,11 @@ This tool helps you download all of a season's subtitles list, in your choosen l
 
 ## Installation
 
-TODO
+Install it from Pypi or clone the repo and install the requirements.
+
+```bash
+pip install crunchyrollsubdownloader
+```
 
 ### FlareSolverr
 

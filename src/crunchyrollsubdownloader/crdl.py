@@ -1,5 +1,3 @@
-#!/usr/bin/python3
-
 import requests
 import json
 from bs4 import BeautifulSoup
@@ -79,6 +77,11 @@ def main():
     parser_dl.add_argument('show_url', help="Crunchyroll show URL", type=str)
 
     args = parser.parse_args()
+
+    if(args.command is None):
+        print("No command supplied, aborting")
+        print(parser.format_help())
+        exit()
 
     soup = fetch_url(args.flaresolverr, args.show_url)
 

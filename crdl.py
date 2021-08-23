@@ -15,19 +15,16 @@ def calc_root_url(show_url):
 
 
 def fetch_url(flaresolverr, show_url):
-    # flaresolverr = flaresolverr + "/v1"
-    # r = requests.post(flaresolverr, json={
-    #     "cmd": "request.get",
-    #     "url": show_url,
-    #     "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleW...",
-    #     "maxTimeout": 60000
-    # }, headers={
-    #     "Content-Type": "application/json"
-    # })
-    # html = r.json()["solution"]["response"]
-    with open('bin/test.html') as f:
-        data = json.load(f)
-        html = data["solution"]["response"]
+    flaresolverr = flaresolverr + "/v1"
+    r = requests.post(flaresolverr, json={
+        "cmd": "request.get",
+        "url": show_url,
+        "userAgent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleW...",
+        "maxTimeout": 60000
+    }, headers={
+        "Content-Type": "application/json"
+    })
+    html = r.json()["solution"]["response"]
     soup = BeautifulSoup(html, features="lxml")
     return soup
 
@@ -81,15 +78,17 @@ parser_dl.add_argument('show_url', help="Crunchyroll show URL", type=str)
 
 args = parser.parse_args()
 
-print(args)
-
 soup = fetch_url(args.flaresolverr, args.show_url)
 
 if(args.command == "dl"):
     episodes = get_season_episodes_url(soup, args.show_url, args.season_name)
     ytdl = youtube_dl.YoutubeDL(
-        {"writesubtitles": True, "subtitleslangs": [args.lang], "skip_download": True, "quiet": not(args.v)})
-    ytdl.download(episodes)
+        {"writesubtitles": True, "subtitleslangs": [args.lang], "skip_download": True, "quiet": not(args.v), "no_warnings": not(args.v)})
+    for el in episodes:
+        try:
+            ytdl.download([el])
+        except:
+            print("Can't download episode subtitles from {}, skipping".format(el))
 
 elif(args.command == "seasons"):
     seasons = get_list_of_seasons(soup)
@@ -101,7 +100,7 @@ elif(args.command == "seasons"):
 elif(args.command == "lang"):
     episodes = get_season_episodes_url(soup, args.show_url, args.season_name)
     ytdl = youtube_dl.YoutubeDL(
-        {"writesubtitles": True, "quiet": not(args.v)})
+        {"writesubtitles": True, "quiet": not(args.v), "no_warnings": not(args.v)})
     if(len(episodes) == 0):
         print("No episode found for this show/season")
         exit()

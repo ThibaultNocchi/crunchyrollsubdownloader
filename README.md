@@ -27,7 +27,7 @@ By default, this tool will try to reach it at `http://localhost:8191`. But if yo
 ## Usage
 
 ```
-usage: crdl.py [-h] [--flaresolverr FLARESOLVERR] [-v] {dl,lang,seasons} ...
+usage: crunchyrollsubdownloader [-h] [--flaresolverr FLARESOLVERR] [-v] {dl,lang,seasons} ...
 
 positional arguments:
   {dl,lang,seasons}     Subcommands
@@ -45,7 +45,7 @@ optional arguments:
 ### Download a season subtitles
 
 ```
-usage: crdl.py dl [-h] show_url season_name lang
+usage: crunchyrollsubdownloader dl [-h] show_url season_name lang
 
 positional arguments:
   show_url     Crunchyroll show URL
@@ -62,13 +62,13 @@ optional arguments:
 - `lang` is a language code found with the language command explained below (such as `enUS`, `frFR`...)
 
 ```bash
-python crdl.py dl https://www.crunchyroll.com/tokyo-revengers "Tokyo Revengers" enUS
+crunchyrollsubdownloader dl https://www.crunchyroll.com/tokyo-revengers "Tokyo Revengers" enUS
 ```
 
 ### Display list of languages for a given season
 
 ```
-usage: crdl.py lang [-h] show_url season_name
+usage: crunchyrollsubdownloader lang [-h] show_url season_name
 
 positional arguments:
   show_url     Crunchyroll show URL
@@ -81,13 +81,13 @@ optional arguments:
 Arguments are the same as above.
 
 ```bash
-python crdl.py lang https://www.crunchyroll.com/tokyo-revengers "Tokyo Revengers"
+crunchyrollsubdownloader lang https://www.crunchyroll.com/tokyo-revengers "Tokyo Revengers"
 ```
 
 ### Display list of seasons for a given show
 
 ```
-usage: crdl.py seasons [-h] show_url
+usage: crunchyrollsubdownloader seasons [-h] show_url
 
 positional arguments:
   show_url    Crunchyroll show URL
@@ -97,5 +97,5 @@ optional arguments:
 ```
 
 ```bash
-python crdl.py seasons https://www.crunchyroll.com/tokyo-revengers
+crunchyrollsubdownloader seasons https://www.crunchyroll.com/tokyo-revengers
 ```

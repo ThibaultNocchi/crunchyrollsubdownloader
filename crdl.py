@@ -51,8 +51,8 @@ def get_list_of_seasons(soup):
 
 
 parser = argparse.ArgumentParser(
-    "Downloads a full season subtitles pack from Crunchyroll, with youtube-dl")
-parser.add_argument("--flaresolverr", help="Flaresolverr API URL",
+    add_help="Downloads a full season subtitles pack from Crunchyroll, with youtube-dl")
+parser.add_argument("--flaresolverr", help="Flaresolverr API URL. Default: http://localhost:8191",
                     type=str, default="http://localhost:8191")
 parser.add_argument('-v', help="Verbose mode",
                     action='store_const', default=False, const=True)
@@ -104,7 +104,8 @@ elif(args.command == "lang"):
     if(len(episodes) == 0):
         print("No episode found for this show/season")
         exit()
-    meta = ytdl.extract_info(episodes[0], False)
+    # Checking last item in the list, cause the first item is the most recent one and can be paywalled
+    meta = ytdl.extract_info(episodes[-1], False)
     languages = meta["subtitles"]
     print("List of available languages to download:")
     print("---------------------------------------")

@@ -1,4 +1,4 @@
-bs4==0.0.1
-requests==2.26.0
-youtube-dl==2021.6.6
-lxml==4.6.3
+bs4
+requests
+youtube-dl
+lxml

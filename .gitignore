@@ -1,2 +1,4 @@
 virtualenv
 .vscode
+dist
+*.egg-info

@@ -1,5 +1,9 @@
 # Crunchyroll Subtitles Downloader
 
+[![PyPI version](https://badge.fury.io/py/crunchyrollsubdownloader.svg)](https://badge.fury.io/py/crunchyrollsubdownloader)
+![GH Action](https://github.com/ThibaultNocchi/crunchyrollsubdownloader/actions/workflows/pypi.yml/badge.svg?event=push)
+![PyPI - Downloads](https://img.shields.io/pypi/dm/crunchyrollsubdownloader)
+
 This tool helps you download all of a season's subtitles list, in your choosen language.
 
 ## Installation
